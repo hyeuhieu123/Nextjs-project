@@ -6,6 +6,7 @@ import {
     ChevronRight,
     CircuitBoardIcon,
     Command,
+    Container,
     CreditCard,
     File,
     FileText,
@@ -57,8 +58,10 @@ export const Icons = {
     arrowRight: ArrowRight,
     help: HelpCircle,
     pizza: Pizza,
+    product: Pizza,
     sun: SunMedium,
     moon: Moon,
+    category: Container,
     laptop: Laptop,
     gitHub: ({ ...props }: LucideProps) => (
         <svg

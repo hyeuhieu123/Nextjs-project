@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { axiosInstance } from "../http-client";
 
-import { IBaseUser, IUser } from "../_types/user";
+import { IBaseUser, IUser } from "../_types/user-type";
 
 import USER_PATHS from "../_paths/user-path";
 

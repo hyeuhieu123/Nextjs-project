@@ -4,7 +4,7 @@ import { DataTable } from '@/shared/components/ui/data-table';
 import { Heading } from '@/shared/components/ui/heading';
 import { Separator } from '@/shared/components/ui/separator';
 
-import { IUser } from '@/server/_types/user';
+import { IUser } from '@/server/_types/user-type';
 
 import { columns } from './column';
 

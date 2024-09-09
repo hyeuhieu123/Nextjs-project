@@ -18,5 +18,17 @@ export const navItems: NavItem[] = [
         href: '/admin/user',
         icon: 'user',
         label: 'user'
+    },
+    {
+        title: 'Category',
+        href: '/admin/category',
+        icon: 'category',
+        label: 'category'
+    },
+    {
+        title: 'Product',
+        href: '/admin/product',
+        icon: 'product',
+        label: 'product'
     }
 ];

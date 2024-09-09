@@ -40,6 +40,6 @@ export async function middleware(req: NextRequest, event: NextFetchEvent) {
 // Cấu hình matcher để đảm bảo đúng các đường dẫn
 export const config = {
     matcher: [
-        '/((?!api|admin|_next/static|_next/image|favicon.ico).*)', // Bỏ qua các đường dẫn API, admin, hình ảnh, và static
+        '/((?!api|admin|_next/static|_next/image|favicon.ico|.*\\b(?:png|jpg|jpeg|gif|svg|css|js|webp|avif)\\b).*)',
     ],
 };
