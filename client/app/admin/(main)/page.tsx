@@ -1,42 +1,38 @@
-"use client";
+'use client'
 
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
-import { CalendarDateRangePicker } from "@/shared/components/date-range-picker";
-import { RecentSales } from "@/shared/components/recent-sales";
-import { Button } from "@/shared/components/ui/button";
+import { CalendarDateRangePicker } from '@/shared/components/date-range-picker';
+import { RecentSales } from '@/shared/components/recent-sales';
+import { Button } from '@/shared/components/ui/button';
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/shared/components/ui/card";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/shared/components/ui/tabs";
-import PageContainer from "@/shared/components/page-container";
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle
+} from '@/shared/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/components/ui/tabs';
+import PageContainer from '@/shared/components/page-container';
 
 const Page = () => {
-  const { isLoaded, isSignedIn, user } = useUser();
+    const { isLoaded, isSignedIn, user } = useUser()
 
-  const router = useRouter();
+    const router = useRouter()
 
-  if (!isLoaded || !isSignedIn) {
-    return router.push("/admin/sign-in");
-  }
-  return (
-    <PageContainer scrollable={true}>
-      <div className="space-y-2">
-        <div className="flex items-center justify-between space-y-2">
-          <h2 className="text-2xl font-bold tracking-tight">
-            Hi, Welcome back 👋
-          </h2>
-        </div>
-        {/* <Tabs defaultValue="overview" className="space-y-4">
+    if (!isLoaded || !isSignedIn) {
+        return router.push('/admin/sign-in')
+    }
+    return (
+        <PageContainer scrollable={true}>
+            <div className="space-y-2">
+                <div className="flex items-center justify-between space-y-2">
+                    <h2 className="text-2xl font-bold tracking-tight">
+                        Hi, Welcome back 👋
+                    </h2>
+                   
+                </div>
+                {/* <Tabs defaultValue="overview" className="space-y-4">
                     <TabsList>
                         <TabsTrigger value="overview">Overview</TabsTrigger>
                         <TabsTrigger value="analytics" disabled>
@@ -162,9 +158,9 @@ const Page = () => {
                         </div>
                     </TabsContent>
                 </Tabs> */}
-      </div>
-    </PageContainer>
-  );
-};
+            </div>
+        </PageContainer>
+    );
+}
 
 export default Page;

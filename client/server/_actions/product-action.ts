@@ -36,6 +36,19 @@ export const useGetProductyId = (id: number | undefined) => {
     });
 };
 
+export const useGetProductBySearch = (query: string) => {
+    const queryFn = async (): Promise<IProduct[]> => {
+        const response = await axiosInstance.get<IBaseResponse<IProduct[]>>(`${PRODUCT_PATHS.SEARCH}${query}`);
+        return response.data;
+    };
+
+    return useQuery<IProduct[], Error>({
+        queryKey: ['PRODUCT', 'SEARCH', query],
+        queryFn: queryFn,
+        enabled: query.length > 0,
+    });
+};
+
 export const useCreateProduct: () => UseMutationResult<
     IBaseResponse<any[]>,
     Error,

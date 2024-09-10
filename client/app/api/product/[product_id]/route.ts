@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 
 const productFilePath = path.resolve(process.cwd(), '../server/product.json');
+const categoryFilePath = path.resolve(process.cwd(), '../server/category.json');
 
 const getProductById = (productId: number) => {
     if (!fs.existsSync(productFilePath)) {
@@ -12,6 +13,19 @@ const getProductById = (productId: number) => {
     const data = fs.readFileSync(productFilePath, 'utf8');
     const products = JSON.parse(data);
     return products.find((product: any) => product.id === productId);
+};
+
+const getAllCategories = () => {
+    if (!fs.existsSync(categoryFilePath)) {
+        return [];
+    }
+
+    const data = fs.readFileSync(categoryFilePath, 'utf8');
+    return JSON.parse(data);
+};
+
+const getCategoryById = (categoryId: number, categories: any[]) => {
+    return categories.find((category: any) => category.id === categoryId);
 };
 
 export async function GET(req: NextRequest) {
@@ -27,10 +41,19 @@ export async function GET(req: NextRequest) {
             return NextResponse.json({ error: 'Product not found' }, { status: 404 });
         }
 
+        const categories = getAllCategories();
+
+        const category = getCategoryById(product.categoryId, categories);
+
+        const productWithCategory = {
+            ...product,
+            category: category || null
+        };
+
         const successResponse = {
             status_code: 200,
-            data: product,
-            message: 'Product retrieved successfully'
+            data: productWithCategory,
+            message: 'Product with category information retrieved successfully'
         };
 
         return NextResponse.json(successResponse, { status: 200 });
@@ -44,6 +67,7 @@ export async function GET(req: NextRequest) {
         return NextResponse.json(errorResponse, { status: 500 });
     }
 }
+
 
 const updateProductById = (productId: number, updateData: any) => {
     if (!fs.existsSync(productFilePath)) {

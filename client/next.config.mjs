@@ -3,7 +3,7 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin();
 
-const hostnames = ["res.cloudinary.com", "i.pravatar.cc", "images.unsplash.com"];
+const hostnames = ["res.cloudinary.com", "i.pravatar.cc", "images.unsplash.com", "avatars.githubusercontent.com", "brand.assets.adidas.com"];
 
 const nextConfig = {
   swcMinify: true,

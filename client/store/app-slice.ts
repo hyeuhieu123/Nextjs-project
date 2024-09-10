@@ -1,22 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export type IDefaultState = {
-    // activeMenu: number;
+    activeSearch: boolean
 };
 
 const initialState: IDefaultState = {
-    // activeMenu: 1,
+    activeSearch: false
 };
 export const appSlice = createSlice({
     name: 'appSlice',
     initialState,
     reducers: {
-        // setActiveMenu: (state, action) => {
-        //     state.activeMenu = action.payload;
-        // }
+        setActiveSearch: (state, action) => {
+            state.activeSearch = action.payload;
+        }
     },
 });
 export const {
-    // setActiveMenu
+    setActiveSearch
 } = appSlice.actions;
 export default appSlice.reducer;

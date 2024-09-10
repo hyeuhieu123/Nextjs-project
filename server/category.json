@@ -1,42 +1,23 @@
 [
   {
-    "id": 1,
-    "name": "Giày",
-    "description": ""
-  },
-  {
     "id": 2,
-    "name": "mũ thể thao",
-    "description": "bền"
+    "name": "Áo 2",
+    "description": "Áo mùa hè ",
+    "createdAt": "2024-09-10T17:05:51.934Z",
+    "updatedAt": "2024-09-10T17:22:42.769Z"
   },
   {
     "id": 3,
-    "name": "mũ thể thao",
-    "description": "bền"
+    "name": "Samba",
+    "description": "Odinary",
+    "createdAt": "2024-09-10T17:05:58.977Z",
+    "updatedAt": "2024-09-10T17:05:58.977Z"
   },
   {
     "id": 4,
-    "name": "mũ thể thao",
-    "description": "bền"
-  },
-  {
-    "id": 5,
-    "name": "mũ thể thao",
-    "description": "bền"
-  },
-  {
-    "id": 6,
-    "name": "mũ thể thao",
-    "description": "bền"
-  },
-  {
-    "id": 7,
-    "name": "mũ thể thao",
-    "description": "bền"
-  },
-  {
-    "id": 8,
-    "name": "mũ thể thao",
-    "description": "bền"
+    "name": "Giày",
+    "description": "giày bóng rổ",
+    "createdAt": "2024-09-10T17:18:32.805Z",
+    "updatedAt": "2024-09-10T17:18:32.805Z"
   }
 ]

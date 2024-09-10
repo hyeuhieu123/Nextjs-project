@@ -8,31 +8,37 @@ import { cn } from "@/shared/lib/utils";
 import { Navbar } from "@/shared/components/layout/navbar";
 import Providers from "../providers";
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "E-Commerce",
-  description: "E-Commerce",
+    title: "E-Commerce",
+    description: "E-Commerce",
 };
 
 export default async function RootLayout({
-  children,
-  params: { locale },
+    children,
+    params: { locale }
 }: Readonly<{
-  children: React.ReactNode;
-  params: { locale: string };
+    children: React.ReactNode
+    params: { locale: string }
 }>) {
-  unstable_setRequestLocale(locale);
+    unstable_setRequestLocale(locale);
 
-  const translate = await getMessages();
+    const translate = await getMessages();
 
-  return (
-    <NextIntlClientProvider messages={translate}>
-      <html lang={locale} suppressHydrationWarning>
-        <body className={cn("min-h-screen bg-background", inter.className)}>
-          <Providers>{children}</Providers>
-        </body>
-      </html>
-    </NextIntlClientProvider>
-  );
+    return (
+        <NextIntlClientProvider messages={translate}>
+            <html lang={locale} suppressHydrationWarning>
+                <body className={cn("min-h-screen bg-background", inter.className)}>
+                    <Providers>
+                        <Navbar />
+                        <main className="w-full h-full overflow-x-hidden">
+                            {children}
+                        </main>
+                    </Providers>
+                </body>
+            </html>
+        </NextIntlClientProvider>
+    );
 }

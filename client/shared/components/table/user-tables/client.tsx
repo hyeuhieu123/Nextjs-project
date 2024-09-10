@@ -13,6 +13,15 @@ interface ProductsClientProps {
 }
 
 export const UserClient: React.FC<ProductsClientProps> = ({ data }) => {
+
+    // Return new data
+    // const newData = data.map(item => {
+    //     return {
+    //         ...item,
+    //         emailAddresses: item.emailAddresses[0].emailAddress
+    //     }
+    // })
+
     return (
         <>
             <div className="flex items-start justify-between">
