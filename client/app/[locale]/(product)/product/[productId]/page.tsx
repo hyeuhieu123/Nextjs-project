@@ -33,9 +33,9 @@ export default function Page({ params }: { params: { productId: string } }) {
         <div className="flex flex-col items-start justify-start w-full h-full col-span-2 md:col-span-1 gap-3">
           <h3 className="text-lg">{product.category.name}</h3>
           <h2 className="text-xl font-bold md:text-3xl">{product.name}</h2>
-          <Badge className="px-4 bg-white text-black text-sm">
+          <div className="px-4 bg-white text-black text-sm">
             {formatCurrencyVN(+product.price)}
-          </Badge>
+          </div>
           <p className="text-xs md:text-base">{product.description}</p>
         </div>
         <div className="w-full col-span-2">
