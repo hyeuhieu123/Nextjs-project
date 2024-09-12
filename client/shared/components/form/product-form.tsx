@@ -29,7 +29,7 @@ import {
 import FileUpload from '@/shared/components/file-upload';
 import { ICategory } from '@/server/_types/category-type';
 
-import { useCreateProduct } from '@/server/_actions/product-action';
+import { useCreateProduct, useUpdateProduct } from '@/server/_actions/product-action';
 
 const formSchema = z.object({
     name: z
@@ -67,17 +67,16 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             name: initialData.name,
             description: initialData.description,
             price: initialData.price,
-            imageUrl: initialData.imageUrl,
+            imageUrl: initialData.imageUrl ? [{ url: initialData.imageUrl }] : [],
             categoryId: String(initialData.categoryId)
         }
         : {
             name: '',
             description: '',
             price: 0,
-            imageUrl: '',
+            imageUrl: [],
             categoryId: ''
         };
-
 
     const form = useForm<ProductFormValues>({
         resolver: zodResolver(formSchema),
@@ -85,10 +84,18 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     });
 
     const doCreateProduct = useCreateProduct();
+    const doUpdateProduct = useUpdateProduct();
 
     const onSubmit = async (data: ProductFormValues) => {
         if (initialData) {
-            // await doUpdateCategory.mutateAsync({ ...data, id: initialData.id });
+            const imageUrl = form.getValues("imageUrl")[0].url
+            const body = {
+                ...data,
+                id: initialData.id,
+                categoryId: Number(data.categoryId),
+                imageUrl: imageUrl as string
+            }
+            await doUpdateProduct.mutateAsync(body);
         } else {
             const imageUrl = form.getValues("imageUrl")[0].url
             const body = {
@@ -107,6 +114,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                 name: initialData.name,
                 description: initialData.description,
                 price: initialData.price,
+                imageUrl: initialData.imageUrl ? [{ url: initialData.imageUrl }] : [],
                 categoryId: String(initialData.categoryId)
             });
         }

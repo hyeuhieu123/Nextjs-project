@@ -12,7 +12,6 @@ import { useGetProductyId } from '@/server/_actions/product-action';
 const breadcrumbItems = [
     { title: 'Dashboard', link: '/admin/product' },
     { title: 'Product', link: '/admin/product' },
-    { title: 'Create', link: '/admin/product/create' }
 ];
 
 export default function Page() {
@@ -30,6 +29,7 @@ export default function Page() {
             setInitialData(product);
         }
     }, [product]);
+
 
     return (
         <ScrollArea className="h-full">

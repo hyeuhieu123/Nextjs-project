@@ -1,32 +1,52 @@
 [
   {
     "id": 1,
-    "categoryId": 3,
-    "name": "SAMBA EDITION",
-    "description": "êm, thoáng",
-    "price": 200000,
-    "imageUrl": "/products/Giay_Handball_Spezial_DJen_DB3021_01_standard.jpg",
-    "createdAt": "2024-09-10T17:11:10.938Z",
-    "updatedAt": "2024-09-10T17:11:10.938Z"
+    "categoryId": 2,
+    "name": "Giày Supernova Solution",
+    "description": "Performance",
+    "price": 100000,
+    "imageUrl": "/products/Giay_Supernova_Solution_Mau_xanh_da_troi_ID3602_HM1.jpg",
+    "createdAt": "2024-09-12T14:29:41.668Z",
+    "updatedAt": "2024-09-12T14:29:41.668Z"
   },
   {
     "id": 2,
     "categoryId": 2,
-    "name": "Giày bóng rổ",
-    "description": "emm thoáng",
-    "price": 30000,
-    "imageUrl": "/products/Giay_Supernova_Solution_Mau_xanh_da_troi_ID3602_HM1.jpg",
-    "createdAt": "2024-09-10T17:12:44.393Z",
-    "updatedAt": "2024-09-10T17:12:44.393Z"
+    "name": "Giày DON",
+    "description": "Performance",
+    "price": 100000,
+    "imageUrl": "/products/Giay_Bong_Ro_D.O.N._Issue_6_Spida_Mau_tim_IG9039_01_00_standard.jpg",
+    "createdAt": "2024-09-12T14:30:02.138Z",
+    "updatedAt": "2024-09-12T14:30:02.138Z"
   },
   {
     "id": 3,
     "categoryId": 4,
-    "name": "GIày",
-    "description": "giày thôi",
-    "price": 50000,
-    "imageUrl": "/products/Giay_Bong_Ro_D.O.N._Issue_6_Spida_Mau_tim_IG9039_01_00_standard.jpg",
-    "createdAt": "2024-09-10T17:28:20.779Z",
-    "updatedAt": "2024-09-10T17:28:20.779Z"
+    "name": "Áo thun 3 sọc Classic",
+    "description": "Originals",
+    "price": 30000,
+    "imageUrl": "/products/Ao_Thun_3_Soc_Classics_Adicolor_Mau_vang_IZ2370_21_model.jpg",
+    "createdAt": "2024-09-12T14:30:23.533Z",
+    "updatedAt": "2024-09-12T14:30:23.533Z"
+  },
+  {
+    "id": 4,
+    "categoryId": 4,
+    "name": "Áo thun 3 sọc Classic",
+    "description": "Originals",
+    "price": 30000,
+    "imageUrl": "/products/Ao_Thun_3_Soc_Classics_Adicolor_nau_IZ3071_21_model.jpg",
+    "createdAt": "2024-09-12T14:34:02.568Z",
+    "updatedAt": "2024-09-12T14:34:02.569Z"
+  },
+  {
+    "id": 5,
+    "categoryId": 1,
+    "name": "SAMBA",
+    "description": "Originals",
+    "price": 100000,
+    "imageUrl": "/products/Giay_Ultraboost_5_Mau_xanh_da_troi_IF1479_HM1.jpg",
+    "createdAt": "2024-09-12T14:34:29.679Z",
+    "updatedAt": "2024-09-12T14:34:29.679Z"
   }
 ]

@@ -1,35 +1,37 @@
-"use client";
+'use client';
 
-import { DataTable } from "@/shared/components/ui/data-table";
-import { Heading } from "@/shared/components/ui/heading";
-import { Separator } from "@/shared/components/ui/separator";
+import { DataTable } from '@/shared/components/ui/data-table';
+import { Heading } from '@/shared/components/ui/heading';
+import { Separator } from '@/shared/components/ui/separator';
 
-import { IUser } from "@/server/_types/user-type";
+import { IUser } from '@/server/_types/user-type';
 
-import { columns } from "./column";
+import { columns } from './column';
 
 interface ProductsClientProps {
-  data: IUser[];
+    data: IUser[];
 }
 
 export const UserClient: React.FC<ProductsClientProps> = ({ data }) => {
-  const newData = data.find((item) => {
-    return {
-      ...item,
-    };
-  });
-  console.log(newData);
 
-  return (
-    <>
-      <div className="flex items-start justify-between">
-        <Heading
-          title={`Users (${data.length})`}
-          description="Manage users (Client side table functionalities.)"
-        />
-      </div>
-      <Separator />
-      <DataTable searchKey="name" columns={columns} data={data} />
-    </>
-  );
+    // Return new data
+    // const newData = data.map(item => {
+    //     return {
+    //         ...item,
+    //         emailAddresses: item.emailAddresses[0].emailAddress
+    //     }
+    // })
+
+    return (
+        <>
+            <div className="flex items-start justify-between">
+                <Heading
+                    title={`Users (${data.length})`}
+                    description="Manage users (Client side table functionalities.)"
+                />
+            </div>
+            <Separator />
+            <DataTable searchKey="name" columns={columns} data={data} />
+        </>
+    );
 };

@@ -3,34 +3,26 @@ import { Checkbox } from "@/shared/components/ui/checkbox";
 import { IUser } from "@/server/_types/user-type";
 
 import { CellAction } from "./cell-action";
-
+import { ArrowUpDown } from "lucide-react";
+import { Button } from "../../ui/button";
 export const columns: ColumnDef<IUser>[] = [
-  {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={table.getIsAllPageRowsSelected()}
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
   {
     accessorKey: "id",
     header: "ID",
   },
   {
     accessorKey: "emailAddresses",
-    header: "Email",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Email
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
     cell: ({ getValue }) => {
       const emailAddresses = getValue() as { emailAddress: string }[];
       return emailAddresses.map((email) => email.emailAddress).join(", ");
@@ -47,7 +39,7 @@ export const columns: ColumnDef<IUser>[] = [
 
   {
     accessorKey: "emailAddresses",
-    header: "Role",
+    header: "Quyen han",
     cell: ({ getValue }) => {
       const emailAddresses = getValue() as { emailAddress: string }[];
       if (

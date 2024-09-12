@@ -1,10 +1,11 @@
 'use client';
+import { usePathname, useRouter } from 'next/navigation';
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/shared/components/ui/avatar';
 import { Button } from '@/shared/components/ui/button';
 import {
     DropdownMenu,
     DropdownMenuContent,
-    DropdownMenuGroup,
     DropdownMenuItem,
     DropdownMenuLabel,
     DropdownMenuSeparator,
@@ -16,6 +17,9 @@ import { useUser, useClerk } from '@clerk/nextjs';
 export function UserNav() {
     const { user } = useUser();
     const { signOut } = useClerk();
+
+    const pathName = usePathname()
+    const router = useRouter()
 
     if (user) {
         return (
@@ -43,21 +47,18 @@ export function UserNav() {
                         </div>
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuGroup>
+                    {pathName.includes('/admin') ? (
                         <DropdownMenuItem>
                             Profile
                             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
                         </DropdownMenuItem>
-                        <DropdownMenuItem>
-                            Billing
-                            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+                    ) : (
+                        <DropdownMenuItem onClick={() => router.push(`${pathName.split("/")[1]}/my-order`)}>
+                            My Order
+                            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
                         </DropdownMenuItem>
-                        <DropdownMenuItem>
-                            Settings
-                            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>New Team</DropdownMenuItem>
-                    </DropdownMenuGroup>
+                    )}
+
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={() => signOut()}>
                         Log out

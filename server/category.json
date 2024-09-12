@@ -1,23 +1,30 @@
 [
   {
+    "id": 1,
+    "name": "SAMBA, SPEZIAL",
+    "description": "Collection",
+    "createdAt": "2024-09-08T10:45:00Z",
+    "updatedAt": "2024-09-12T14:28:43.108Z"
+  },
+  {
     "id": 2,
     "name": "Hàng mới về",
-    "description": "Áo mùa hè ",
-    "createdAt": "2024-09-10T17:05:51.934Z",
-    "updatedAt": "2024-09-11T01:10:31.457Z"
+    "description": "Giày",
+    "createdAt": "2024-09-12T14:27:32.733Z",
+    "updatedAt": "2024-09-12T14:27:32.733Z"
   },
   {
     "id": 3,
-    "name": "Samba",
-    "description": "Odinary",
-    "createdAt": "2024-09-10T17:05:58.977Z",
-    "updatedAt": "2024-09-10T17:05:58.977Z"
+    "name": "Hàng hè ",
+    "description": "Nam",
+    "createdAt": "2024-09-12T14:27:42.110Z",
+    "updatedAt": "2024-09-12T14:27:42.110Z"
   },
   {
     "id": 4,
-    "name": "Giày",
-    "description": "giày bóng rổ",
-    "createdAt": "2024-09-10T17:18:32.805Z",
-    "updatedAt": "2024-09-10T17:18:32.805Z"
+    "name": "Adicolor",
+    "description": "Áo thun",
+    "createdAt": "2024-09-12T14:27:54.342Z",
+    "updatedAt": "2024-09-12T14:27:54.342Z"
   }
 ]

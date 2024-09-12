@@ -6,27 +6,9 @@ import { Badge } from "@/shared/components/ui/badge";
 import { ICategory } from "@/server/_types/category-type";
 
 import { CellAction } from "./cell-action";
+import { formatCurrencyVN } from "@/shared/utils/format-money";
 
 export const columns: ColumnDef<ICategory>[] = [
-  {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={table.getIsAllPageRowsSelected()}
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
   {
     accessorKey: "id",
     header: "ID",
@@ -66,6 +48,9 @@ export const columns: ColumnDef<ICategory>[] = [
   {
     accessorKey: "price",
     header: "Price",
+    cell: ({ getValue }) => {
+      return <p>{formatCurrencyVN(Number(getValue()))}</p>;
+    },
   },
 
   {

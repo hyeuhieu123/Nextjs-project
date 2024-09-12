@@ -87,12 +87,12 @@ export const useCreateProduct: () => UseMutationResult<
 export const useUpdateProduct: () => UseMutationResult<
     IBaseResponse<any>,
     Error,
-    { id: number; categoryId: string; name: string; description: string; price: number; imageUrl: string }
+    { id: number; categoryId: number; name: string; description: string; price: number; imageUrl: string }
 > = () => {
     const router = useRouter()
 
-    return useMutation<IBaseResponse<any[]>, Error, { id: number; categoryId: string; name: string; description: string; price: number; imageUrl: string }>({
-        mutationFn: (body: { id: number; categoryId: string; name: string; description: string; price: number; imageUrl: string }) =>
+    return useMutation<IBaseResponse<any[]>, Error, { id: number; categoryId: number; name: string; description: string; price: number; imageUrl: string }>({
+        mutationFn: (body: { id: number; categoryId: number; name: string; description: string; price: number; imageUrl: string }) =>
             axiosInstance.patch<IBaseResponse<any>>(`${PRODUCT_PATHS.UPDATE}/${body.id}`, body),
         onMutate: () => {
             toast({
