@@ -126,5 +126,21 @@
     "quantity": 1,
     "createdAt": "2024-09-12T16:25:28.732Z",
     "updatedAt": "2024-09-12T16:25:28.732Z"
+  },
+  {
+    "id": 1726159221572,
+    "productId": 5,
+    "orderId": 12,
+    "quantity": 3,
+    "createdAt": "2024-09-12T16:40:21.567Z",
+    "updatedAt": "2024-09-12T16:40:21.567Z"
+  },
+  {
+    "id": 1726160100106,
+    "productId": 5,
+    "orderId": 13,
+    "quantity": 4,
+    "createdAt": "2024-09-12T16:55:00.101Z",
+    "updatedAt": "2024-09-12T16:55:00.101Z"
   }
 ]

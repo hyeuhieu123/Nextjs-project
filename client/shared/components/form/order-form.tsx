@@ -27,7 +27,6 @@ import { Separator } from "@/shared/components/ui/separator";
 
 import { useCreateOrder } from "@/server/_actions/order-action";
 import { useAppSelector } from "@/store";
-
 const formSchema = z.object({
   fullName: z.string().min(1, { message: "Full name is required" }),
   address: z.string().min(1, { message: "Address is required" }),
@@ -46,7 +45,6 @@ interface CategoryFormProps {
 
 export const OrderForm: React.FC<CategoryFormProps> = ({ initialData }) => {
   const router = useRouter();
-  //   const [cart, setCart] = setCartLocalStorage<any>(null);
   const [loading, setLoading] = useState(false);
 
   const { cartLocalStorage } = useAppSelector((state) => state.app);
@@ -80,7 +78,7 @@ export const OrderForm: React.FC<CategoryFormProps> = ({ initialData }) => {
     };
 
     await doCreateOrder.mutateAsync(body);
-    setCartLocalStorage(null);
+    setCart(null);
     form.reset();
     router.refresh();
   };
@@ -225,3 +223,6 @@ export const OrderForm: React.FC<CategoryFormProps> = ({ initialData }) => {
     </>
   );
 };
+function setCart(arg0: null) {
+  throw new Error("Function not implemented.");
+}
