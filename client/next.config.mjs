@@ -3,11 +3,17 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin();
 
-const hostnames = ["res.cloudinary.com", "i.pravatar.cc", "images.unsplash.com", "avatars.githubusercontent.com", "brand.assets.adidas.com"];
+const hostnames = [
+  "res.cloudinary.com",
+  "i.pravatar.cc",
+  "images.unsplash.com",
+  "avatars.githubusercontent.com",
+  "brand.assets.adidas.com",
+];
 
 const nextConfig = {
   swcMinify: true,
-  reactStrictMode: true,
+  reactStrictMode: false,
   experimental: {
     mdxRs: true,
   },
@@ -19,6 +25,6 @@ const nextConfig = {
       pathname: "**",
     })),
   },
-  transpilePackages: ['lucide-react'],
+  transpilePackages: ["lucide-react"],
 };
 export default withNextIntl(nextConfig);
