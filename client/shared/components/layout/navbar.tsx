@@ -8,7 +8,14 @@ import { useRouter } from "@/shared/hooks/use-nextIntl";
 import { usePathname } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 import { cn } from "@/shared/lib/utils";
-import { ChevronsDown, Menu, Search, ShoppingCart, User } from "lucide-react";
+import {
+  ChevronsDown,
+  Menu,
+  Search,
+  ShoppingCart,
+  User,
+  UserIcon,
+} from "lucide-react";
 
 import {
   Sheet,
@@ -101,7 +108,9 @@ export const Navbar = () => {
   const { isSignedIn } = useUser();
   const { cartLocalStorage } = useAppSelector((state) => state.app);
   const { data, error, isLoading } = useGetProductBySearch(debouncedQuery);
-
+  const handleNavigation = () => {
+    router.push("/sign-in");
+  };
   useEffect(() => {
     if (cart) {
       console.log(cart);
@@ -247,7 +256,13 @@ export const Navbar = () => {
           )}
         </Popover>
 
-        {isSignedIn && <UserNav />}
+        {isSignedIn ? (
+          <UserNav />
+        ) : (
+          <Button variant="ghost" onClick={handleNavigation}>
+            <UserIcon className="size-5" />
+          </Button>
+        )}
 
         <ToggleTheme />
       </div>

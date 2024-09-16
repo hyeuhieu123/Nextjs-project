@@ -37,6 +37,14 @@ export const columns: ColumnDef<IOrder>[] = [
     },
   },
   {
+    accessorKey: "createdAt",
+    header: "Created At",
+    cell: ({ getValue }) => {
+      const date = new Date(getValue() as number);
+      return date.toLocaleDateString();
+    },
+  },
+  {
     accessorKey: "status",
     header: "Status",
     cell: ({ getValue }) => {

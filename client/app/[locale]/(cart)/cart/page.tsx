@@ -33,8 +33,20 @@ const Page = () => {
 
   const { cartLocalStorage } = useAppSelector((state) => state.app);
   const { isSignedIn, user } = useUser();
-  console.log(cartLocalStorage);
-  function handleQuantityCart(cart: IProduct, action: "add" | "reduce") {
+  // console.log(cartLocalStorage);
+  function handleRemoveProduct(cart: IProduct) {
+    const updatedCart = cartLocalStorage.filter(
+      (item) => item.product.id !== cart.id
+    );
+
+    dispatch(setCartLocalStorage(updatedCart));
+    setCart(updatedCart);
+  }
+  function handleQuantityCart(
+    cart: IProduct,
+    action: "add" | "reduce",
+    quantity?: number
+  ) {
     const existingProductIndex = cartLocalStorage.findIndex(
       (item) => item.product.id === cart.id
     );
@@ -43,6 +55,10 @@ const Page = () => {
       const updatedCart = cartLocalStorage
         .map((item, index) => {
           if (index === existingProductIndex) {
+            // Nếu có số lượng từ select thì cập nhật trực tiếp
+            if (quantity !== undefined) {
+              return { ...item, quantity };
+            }
             if (action === "add") {
               return { ...item, quantity: item.quantity + 1 };
             } else if (action === "reduce") {
@@ -55,8 +71,8 @@ const Page = () => {
 
       dispatch(setCartLocalStorage(updatedCart));
       setCart(updatedCart);
-    } else if (action === "add") {
-      const newCart = [...cartLocalStorage, { product: cart, quantity: 1 }];
+    } else if (action === "add" && quantity) {
+      const newCart = [...cartLocalStorage, { product: cart, quantity }];
       dispatch(setCartLocalStorage(newCart));
       setCart(newCart);
     }
@@ -77,7 +93,7 @@ const Page = () => {
               <th className="text-left">Price</th>
             </tr>
           </thead>
-          <tbody>
+          {/* <tbody>
             {cartLocalStorage.map((item, index) => (
               <tr key={index} className="border-b border-b-neutral-200">
                 <td>
@@ -112,6 +128,56 @@ const Page = () => {
                 <td>
                   {formatCurrencyVN(Number(item.product.price) * item.quantity)}
                 </td>
+              </tr>
+            ))}
+          </tbody> */}
+          <tbody>
+            {cartLocalStorage.map((item, index) => (
+              <tr key={index} className="border-b border-b-neutral-200">
+                <td>
+                  <div className="flex items-center gap-3">
+                    <Image
+                      width={200}
+                      height={200}
+                      alt={item.product.name}
+                      src={item.product.imageUrl}
+                      className="w-[200px] h-[200px] object-cover"
+                    />
+                    <h3 className="whitespace-nowrap">{item.product.name}</h3>
+                  </div>
+                </td>
+                <td>
+                  {/* Sử dụng vòng lặp for để tạo select từ 1 tới 9 */}
+                  <select
+                    value={item.quantity}
+                    onChange={(e) =>
+                      handleQuantityCart(
+                        item.product,
+                        "add",
+                        parseInt(e.target.value)
+                      )
+                    }
+                    className="border border-gray-300 p-4 px-6"
+                  >
+                    {Array.from({ length: 9 }, (_, i) => i + 1).map(
+                      (number) => (
+                        <option key={number} value={number}>
+                          {number}
+                        </option>
+                      )
+                    )}
+                  </select>
+                </td>
+                <td>
+                  {formatCurrencyVN(Number(item.product.price) * item.quantity)}
+                </td>
+                <button
+                  type="button"
+                  className="bg-transparent text-black  p-2 font-bold text-xl "
+                  onClick={() => handleRemoveProduct(item.product)}
+                >
+                  X
+                </button>
               </tr>
             ))}
           </tbody>

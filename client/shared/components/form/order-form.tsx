@@ -24,9 +24,10 @@ import {
   SelectValue,
 } from "@/shared/components/ui/select";
 import { Separator } from "@/shared/components/ui/separator";
-
+import useLocalStorage from "@/shared/hooks/use-localStorage";
 import { useCreateOrder } from "@/server/_actions/order-action";
 import { useAppSelector } from "@/store";
+import { useDispatch } from "react-redux";
 const formSchema = z.object({
   fullName: z.string().min(1, { message: "Full name is required" }),
   address: z.string().min(1, { message: "Address is required" }),
@@ -46,7 +47,7 @@ interface CategoryFormProps {
 export const OrderForm: React.FC<CategoryFormProps> = ({ initialData }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-
+  const dispatch = useDispatch();
   const { cartLocalStorage } = useAppSelector((state) => state.app);
 
   const action = initialData ? "Save changes" : "Create";
@@ -68,6 +69,7 @@ export const OrderForm: React.FC<CategoryFormProps> = ({ initialData }) => {
 
   const doCreateOrder = useCreateOrder();
 
+  const [setCart] = useLocalStorage<any>("carts", null);
   const onSubmit = async (data: OrderFormValues) => {
     const body = {
       ...data,
@@ -78,7 +80,7 @@ export const OrderForm: React.FC<CategoryFormProps> = ({ initialData }) => {
     };
 
     await doCreateOrder.mutateAsync(body);
-    setCart(null);
+    dispatch(setCartLocalStorage([]));
     form.reset();
     router.refresh();
   };
@@ -223,6 +225,3 @@ export const OrderForm: React.FC<CategoryFormProps> = ({ initialData }) => {
     </>
   );
 };
-function setCart(arg0: null) {
-  throw new Error("Function not implemented.");
-}
